@@ -1,5 +1,13 @@
 import xmltodict, json
+import couchdb
 
+cli = couchdb.Server()
+db = cli['finra']
+docs = db['3c381ae20cb8003b2ea552696a0009ae']
+for i in docs['finra']['IAPDIndividualReport']['Indvls']['Indvl']:
+	print i
 
-data = open('data.xml')
-print xmltodict.parse(data)
+# for doc in docs.finra:
+# 	for do in doc.IAPDIndividualReport:
+# 		for d in do.Indvls:
+# 			print d
