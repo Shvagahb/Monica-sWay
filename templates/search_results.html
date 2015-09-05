@@ -33,13 +33,17 @@
                 <!-- Result table content -->
                 <!-- Need for loop here to loop through data sent from backend -->
                 <div class="col-lg-12">
-                  <a href="#linkhere">
-                    <div class="col-lg-3">lastname</div>
-                    <div class="col-lg-3">firstname</div>
-                    <div class="col-lg-2">company</div>
-                    <div class="col-lg-2">city</div>
-                    <div class="col-lg-2">state</div>
+                {% if res %}
+                {% for i in res %}
+                  <a href="{{}}">
+                    <div class="col-lg-3">{{ i["Info"]["@lastNm"] }}</div>
+                    <div class="col-lg-3">{{ i["Info"]["@firstNm"] }}</div>
+                    <div class="col-lg-2">{{ i["CrntEmps"]["CrntEmp"]["@orgNm"]}}</div>
+                    <div class="col-lg-2">{{ i["CrntEmps"]["CrntEmp"]["@city"]}}</div>
+                    <div class="col-lg-2">{{ i["CrntEmps"]["CrntEmp"]["@state"]}}</div>
                   </a>
+                {% endfor %}
+                {% endif %}
                 </div>
               </div>
               <div class="col-lg-1"></div>
