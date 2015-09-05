@@ -7,7 +7,8 @@ db = cli.finra
 
 @app.route("/",methods=['POST','GET'])
 def index():
-	return render_template("index.html")
+	search_form = SearchForm()
+	return render_template("index.html", form=search_form)
 
 @app.route("/search",methods=['POST','GET'])
 def search_advisors():

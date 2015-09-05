@@ -3,4 +3,4 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 
 class SearchForm(Form):
-	name = StringField('name', validators=[DataRequired()])
+	first_name = StringField('first_name', validators=[DataRequired()])
