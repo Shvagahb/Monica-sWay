@@ -1,7 +1,8 @@
 web:
   restart: always
   build: ./app
-    - expose: "8000"
+  expose: 
+    - "8000"
   volumes:
     - /usr/src/app/static
   env_file: 
