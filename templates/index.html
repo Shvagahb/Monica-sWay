@@ -23,11 +23,10 @@
   		
 	  		{{ form.csrf_token }}
 
-	        {{ render_field(form.first_name, class="formtext", value="First Name")}}
+	        {{ render_field(form.first_name, class="formtext", value="First Name")}} <br>
 
-	        
+	    	{{ render_field(form.last_name, class="formtext", value="Last Name")}} <br>
 
-        <input class="formtext" type="text" name="lastname" value="Last Name"><br><br><br>
         
         <select>
         <option value="volvo">Company Name</option>
