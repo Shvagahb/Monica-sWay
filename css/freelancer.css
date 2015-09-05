@@ -457,3 +457,7 @@ footer .footer-below {
     display: none;
     opacity: 0;
 }
+
+.formtext {
+    color: #000000
+}
