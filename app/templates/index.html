@@ -24,12 +24,12 @@
         <input class="formtext" type="text" name="lastname" placeholder="Last Name"><br><br><br>
         <select>
         {% for i in companies %}
-        <option value="">{{i}}</option>
+        <option type="text" name="company" value="{{i}}">{{i}}</option>
         {% endfor %} 
          </select><br><br><br>
         <select>
         {% for i in states %}
-        <option value="">{{i}}</option>
+        <option name="state">{{i}}</option>
         {% endfor %}
         </select><br><br><br>
         <input class="formtext" type="submit" value="Submit">

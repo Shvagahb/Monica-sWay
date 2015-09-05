@@ -47,12 +47,14 @@ def index():
 @app.route("/search",methods=['POST','GET'])
 def search_advisors():
 	res = []
-	if request.method == 'POST':
+	if request.method == 'POST' and request.form['firstname'] != '' and request.form['lastname'] !='':
 		firstname = str(request.form['firstname']).upper()
 		lastname = str(request.form['lastname']).upper()
 		cursor = db.dataset.find({"Info.@firstNm":firstname,"Info.@lastNm":lastname})
 		for i in cursor:
 			res.append(i)
+	res = set(res)
+	res = list(res)
 	return render_template("search_results.html",res=res)
 
 @app.route("/advisor/<objectid:id>",methods=['POST','GET'])
