@@ -48,12 +48,12 @@ hr.star-primary {
 
 hr.star-light:after,
 hr.star-primary:after {
-    /* content: "\f005"; */
+    content: "\f005";
     display: inline-block;
     position: relative;
     top: -.8em;
     padding: 0 .25em;
-    /* font-family: FontAwesome; */
+    font-family: FontAwesome;
     font-size: 2em;
 }
 
@@ -458,28 +458,17 @@ footer .footer-below {
     opacity: 0;
 }
 
-
-
-.search-results {
-  padding: 150px 0;
+.formtext {
+    color: #18bc9c;
+    border-box:2px;
+    text-align: center;
+    border-color: #2c3e50;
+    
 }
 
 
-.result-table {
-  padding-top: 40px;
-}
+header {
 
-.result-table-header {
-  margin: 0;
-}
-
-footer .footer-below {
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
-}
-
-.drp {
-  margin: 0;
-  line-height: 2.5em;
+    color:#2c3e50;
+    background-color: #ffffff
 }
