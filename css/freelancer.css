@@ -461,6 +461,7 @@ footer .footer-below {
 .formtext {
     color: #2c3e50;
     border-top:2px;
+    border-bottom: 2px;
     border-color: #2c3e50;
 }
 
