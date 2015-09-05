@@ -1,11 +1,14 @@
 import couchdb
 from flask import Flask, jsonify, render_template
+from forms import SearchForm
 
 app = Flask(__name__)
+app.secret_key = "MonicaInvestigates"
 
 @app.route("/")
 def index():
-	return render_template("index.html")
+	search_form = SearchForm()
+	return render_template("index.html", form=search_form)
 
 @app.route("/search")
 def search_advisors():
