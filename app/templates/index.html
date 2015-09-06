@@ -19,15 +19,8 @@
         </div>
 
     <div class="formtext"> 
-        <form action="search" method="POST">  
-        <input class="formtext" type="text" name="firstname" placeholder="First Name"><br><br><br>
-        <input class="formtext" type="text" name="lastname" placeholder="Last Name"><br><br><br>
-        <select>
-        {% for i in companies %}
-        <option type="text" name="company" value="{{i}}">{{i}}</option>
-        {% endfor %} 
-         </select><br><br><br>
-        <select>
+    <form action="search" method="POST"> 
+        <input class="formtext" id="company" name="company" placeholder="Enter company"><br><br><br>
         {% for i in states %}
         <option name="state">{{i}}</option>
         {% endfor %}
@@ -37,5 +30,18 @@
  </div>
 
     </header>
+
+<script>
+$(function() {
+    $.ajax({
+        url: '{{ url_for("autocomplete") }}'
+        }).done(function (data) {
+            $('#company').autocomplete({
+                source: data.json_list,
+                minLength: 2
+            });
+        });
+    });
+</script>
 
 {% endblock %}
