@@ -4,13 +4,23 @@
 <!-- Search Results -->
      <section id="portfolio" class="search-results">
         <div class="container">
+        <div class="row">
+                <div class="col-lg-12 text-center">
+                    {% if has_records %}
+                    <img src="{{ url_for('static', filename='img/evil_monica.jpg')}}">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='img/good_monica.jpg')}}">
+                    {% endif %}
+
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <!-- The firstname lastname needs to be queried from backend -->
                     {% for res in result %}
                     <h2>{{ res["Info"]["@firstNm"] }} {{res["Info"]["@lastNm"]}}</h2>
                     
-                    <p class="other-names">Other name(s): Firstname Lastname 1, Firstname Lastname 2</p>
+                  <!--   <p class="other-names">Other name(s): FirstnameLastname 1, Firstname Lastname 2</p> -->
                     {% endfor %}
                     <hr class="star-primary">
                 </div>
@@ -19,14 +29,128 @@
             <div class="row">
               <div class="col-lg-12 text-center">
                 <!-- Company name needs to be queried from backend -->
-                  <h4>Morgan Stanley</h4>
+                  <h4>{{co}}</h4>
                   <!-- City, State needs to be queried from backend -->
-                  New York City, NY
+                  {{st}}
               </div>
             </div>
 
             <div class="col-lg-2">
             </div>
+              <div class="profile-section">
+                <div class="drp-header">
+                  <span class="profile-section-icon"><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <h4>DRP Information</h4>
+                </div>
+                  <div class="col-lg-12 no-left-padding">
+                    <div class="col-lg-6 no-left-padding extra-line-height">Regulatory Action Filed Against</div>
+                    <!-- Need to do if and else statement here -->
+                    <!-- If this is true -->
+                    {% if has_reg_action %}
+                    <div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>
+                    {% else %}
+                    <!-- Else don't show -->
+                      <div class="col-lg-2"><i class="fa fa-circle-o"></i></div>
+                      {% endif %}
+                  </div>
+
+                  <div class="col-lg-12 no-left-padding">
+                    <div class="col-lg-6 no-left-padding extra-line-height">Criminal Record</div>
+                    <!-- Need to do if and else statement here -->
+                    <!-- If this is true -->
+                    {% if has_criminal %}
+                    <div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>
+                    {% else %}
+                    <!-- Else don't show -->
+                      <div class="col-lg-2"><i class="fa fa-circle-o"></i></div>
+                      {% endif %}
+                  </div>
+
+                  <div class="col-lg-12 no-left-padding">
+                    <div class="col-lg-6 no-left-padding extra-line-height">Past Bankruptcy</div>
+                    <!-- Need to do if and else statement here -->
+                    <!-- If this is true -->
+                    {% if has_bankrupt %}
+                    <div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>
+                    <!-- Else don't show -->
+                    {% else %}
+                      <div class="col-lg-2"><i class="fa fa-circle-o"></i></div>
+                      {% endif %}
+                  </div>
+
+                  <div class="col-lg-12 no-left-padding">
+                    <div class="col-lg-6 no-left-padding extra-line-height">Civil Judicial Court</div>
+                    <!-- Need to do if and else statement here -->
+                    <!-- If this is true -->
+                    {% if has_civil_judc %}
+                     <div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>
+                    <!-- Else don't show -->
+                      {% else %}
+                      <div class="col-lg-2"><i class="fa fa-circle-o"></i></div>
+                      {% endif %}
+                  </div>
+
+                  <div class="col-lg-12 no-left-padding">
+                    <div class="col-lg-6 no-left-padding extra-line-height">Jail Bond Filed</div>
+                    <!-- Need to do if and else statement here -->
+                    <!-- If this is true -->
+                     {% if has_bond %} 
+                    <div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>
+                    {% else %}
+                    <!-- Else don't show -->
+                      <div class="col-lg-2"><i class="fa fa-circle-o"></i></div>
+                      {% endif %}
+                  </div> 
+
+                  <div class="col-lg-12 no-left-padding">
+                    <div class="col-lg-6 no-left-padding extra-line-height">Taken to Court</div>
+                    <!-- Need to do if and else statement here -->
+                    <!-- If this is true -->
+                    {% if has_judgement %}
+                    <div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>
+                    <!-- Else don't show -->
+                    {% else %}  
+                      <div class="col-lg-2"><i class="fa fa-circle-o"></i></div>
+                      {% endif %}
+                  </div>
+
+                  <div class="col-lg-12 no-left-padding">
+                    <div class="col-lg-6 no-left-padding extra-line-height">Investigation on Individual</div>
+                    <!-- Need to do if and else statement here -->
+                    <!-- If this is true -->
+                    {% if has_investigation %}
+                    <div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>
+                    {% else %}
+                    <!-- Else don't show -->
+                      <div class="col-lg-2"><i class="fa fa-circle-o"></i></div>
+                      {% endif %}
+                  </div>
+
+                  <div class="col-lg-12 no-left-padding">
+                    <div class="col-lg-6 no-left-padding extra-line-height">Customer Complaints</div>
+                    <!-- Need to do if and else statement here -->
+                    <!-- If this is true -->
+                    {% if has_cust_comp %}
+                    <div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>
+                    {% else %}
+                    <!-- Else don't show -->
+                      <div class="col-lg-2"><i class="fa fa-circle-o"></i></div>
+                      {% endif %}
+                  </div> 
+
+                  <div class="col-lg-12 no-left-padding">
+                    <div class="col-lg-6 no-left-padding extra-line-height">Terminated from Past Jobs</div>
+                    <!-- Need to do if and else statement here -->
+                    <!-- If this is true -->
+                    {% if has_termination %}
+                    <div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>
+                    <!-- Else don't show -->
+                    {% else %}
+                    <div class="col-lg-2"><i class="fa fa-circle-o"></i></div>
+                    {% endif %}
+                  </div>
+            </div>
+
 
             <div class="col-lg-8 info-wrapper">
 
@@ -68,95 +192,12 @@
               </div>
 
             <hr class="profile-hr">
+            <!--
+            has_cust_comp = None
+            has_termination = None
+            has_records = None -->
 
               <!-- DRP section -->
-            <div class="profile-section">
-                <div class="drp-header">
-                  <span class="profile-section-icon"><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <h4>DRP Information</h4>
-                </div>
-                  <div class="col-lg-12 no-left-padding">
-                    <div class="col-lg-6 no-left-padding extra-line-height">Regulatory Action Filed Against</div>
-                    <!-- Need to do if and else statement here -->
-                    <!-- If this is true -->
-                    <!--<div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>-->
-                    <!-- Else don't show -->
-                      <div class="col-lg-2"><i class="fa fa-circle-o"></i></div>
-                  </div>
-
-                  <div class="col-lg-12 no-left-padding">
-                    <div class="col-lg-6 no-left-padding extra-line-height">Criminal Record</div>
-                    <!-- Need to do if and else statement here -->
-                    <!-- If this is true -->
-                    <div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>
-                    <!-- Else don't show -->
-                      <!-- <div class="col-lg-2"><i class="fa fa-circle-o"></i></div> -->
-                  </div>
-
-                  <div class="col-lg-12 no-left-padding">
-                    <div class="col-lg-6 no-left-padding extra-line-height">Past Bankruptcy</div>
-                    <!-- Need to do if and else statement here -->
-                    <!-- If this is true -->
-                    <!--<div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>-->
-                    <!-- Else don't show -->
-                      <div class="col-lg-2"><i class="fa fa-circle-o"></i></div>
-                  </div>
-
-                  <div class="col-lg-12 no-left-padding">
-                    <div class="col-lg-6 no-left-padding extra-line-height">Civil Judicial Court</div>
-                    <!-- Need to do if and else statement here -->
-                    <!-- If this is true -->
-                    <!-- <div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>-->
-                    <!-- Else don't show -->
-                      <div class="col-lg-2"><i class="fa fa-circle-o"></i></div>
-                  </div>
-
-                  <div class="col-lg-12 no-left-padding">
-                    <div class="col-lg-6 no-left-padding extra-line-height">Jail Bond Filed</div>
-                    <!-- Need to do if and else statement here -->
-                    <!-- If this is true -->
-                    <div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>
-                    <!-- Else don't show -->
-                      <!-- <div class="col-lg-2"><i class="fa fa-circle-o"></i></div> -->
-                  </div>
-
-                  <div class="col-lg-12 no-left-padding">
-                    <div class="col-lg-6 no-left-padding extra-line-height">Taken to Court</div>
-                    <!-- Need to do if and else statement here -->
-                    <!-- If this is true -->
-                    <!--<div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>-->
-                    <!-- Else don't show -->
-                      <div class="col-lg-2"><i class="fa fa-circle-o"></i></div>
-                  </div>
-
-                  <div class="col-lg-12 no-left-padding">
-                    <div class="col-lg-6 no-left-padding extra-line-height">Investigation on Individual</div>
-                    <!-- Need to do if and else statement here -->
-                    <!-- If this is true -->
-                    <div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>
-                    <!-- Else don't show -->
-                      <!-- <div class="col-lg-2"><i class="fa fa-circle-o"></i></div> -->
-                  </div>
-
-                  <div class="col-lg-12 no-left-padding">
-                    <div class="col-lg-6 no-left-padding extra-line-height">Customer Complaints</div>
-                    <!-- Need to do if and else statement here -->
-                    <!-- If this is true -->
-                    <div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>
-                    <!-- Else don't show -->
-                      <!-- <div class="col-lg-2"><i class="fa fa-circle-o"></i></div> -->
-                  </div>
-
-                  <div class="col-lg-12 no-left-padding">
-                    <div class="col-lg-6 no-left-padding extra-line-height">Terminated from Past Jobs</div>
-                    <!-- Need to do if and else statement here -->
-                    <!-- If this is true -->
-                    <!--<div class="col-lg-2"><i class="fa fa-times-circle-o"></i></div>-->
-                    <!-- Else don't show -->
-                    <div class="col-lg-2"><i class="fa fa-circle-o"></i></div>
-                  </div>
-            </div>
-
 
             <div class="col-lg-2">
             </div>
